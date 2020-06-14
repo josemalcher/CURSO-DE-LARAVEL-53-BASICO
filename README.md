@@ -41,7 +41,11 @@ CURSO BÁSICO PARA QUEM ESTÁ COMEÇANDO NO MUNDO LARAVEL E QUER DESFRUTAR DESTE
 
 ## <a name="parte1">1 - Instalando o Laravel 5.3 </a>
 
+- https://laravel.com/docs/5.3
 
+```
+composer create-project --prefer-dist laravel/laravel laravel53-basico "5.3.*"
+```
 
 [Voltar ao Índice](#indice)
 
