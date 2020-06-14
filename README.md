@@ -118,7 +118,36 @@ Route::get('/', function () {
 
 ## <a name="parte5">5 - Rotas Final Laravel 5.3 </a>
 
+```php
 
+Route::get('/categoria/{idCat}/nome-fixo/{param2}', function ($idCat, $param2){
+    return "Post da Categoria {$idCat} e {$param2}";
+});
+
+Route::get('/categoria2/{idCat?}', function ($idCat = "Nenhuma"){
+    return "Post da Categoria {$idCat}";
+});
+
+//Grupos de Rote
+
+Route::group(['prefix'=>'painel', 'middleware'=> 'auth'], function (){
+    Route::get('grupo1', function (){
+        return "GRupo 1";
+    });
+    Route::get('grupo2', function (){
+        return "GRupo 2";
+    });
+    Route::get('/', function (){
+        return 'Dashboard';
+    });
+});
+
+Route::get('/login', function (){
+    return "#form login";
+});
+
+
+```
 
 [Voltar ao Índice](#indice)
 
