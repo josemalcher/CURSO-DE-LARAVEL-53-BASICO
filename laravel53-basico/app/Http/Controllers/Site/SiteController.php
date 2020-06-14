@@ -32,15 +32,18 @@ class SiteController extends Controller
 
     public function index()
     {
-        $teste = 123;
-        $teste2 = "Um dois Três";
+//        $teste = 123;
+//        $teste2 = "Um dois Três";
+
+        $xss = '<script>alert("atack XSS")</script>';
+
         /*return view('teste', ['teste'=> $teste]);*/
-        return view('site.home.teste', compact('teste','teste2'));
+        return view('site.home.index', compact( 'xss'));
     }
 
     public function contato()
     {
-        return "Controller página de contato";
+        return view('site.contato.index');
     }
 
     public function categoria($id)
