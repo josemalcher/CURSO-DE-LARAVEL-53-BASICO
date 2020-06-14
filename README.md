@@ -156,7 +156,75 @@ Route::get('/login', function (){
 
 ## <a name="parte6">6 - Controllers Laravel 5.3 </a>
 
+```
+php artisan make:controller Painel\\PainelController
+```
 
+```php
+<?php
+
+namespace App\Http\Controllers\Site;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class SiteController extends Controller
+{
+    public function index()
+    {
+        return 'Controller Site';
+    }
+
+    public function contato()
+    {
+        return "Controller página de contato";
+    }
+
+    public function categoria($id)
+    {
+        return "Categoria {$id}";
+    }
+
+    public function categoriaOp($id = "Sem Categoria")
+    {
+        return "Categoria {$id}";
+    }
+}
+
+```
+
+```php
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+/*
+ Route::get('/', 'Site\SiteController@index');
+Route::get('/contato', 'Site\SiteController@contato');
+
+Route::get('/categoria/{id}', 'Site\SiteController@categoria');
+Route::get('/categoria2/{id?}', 'Site\SiteController@categoriaOp');
+*/
+
+Route::group(['namespace'=>'Site'], function (){
+    Route::get('/', 'SiteController@index');
+    Route::get('/contato', 'SiteController@contato');
+
+    Route::get('/categoria/{id}', 'SiteController@categoria');
+    Route::get('/categoria2/{id?}', 'SiteController@categoriaOp');
+});
+
+
+```
 
 [Voltar ao Índice](#indice)
 

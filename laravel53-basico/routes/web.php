@@ -11,62 +11,19 @@
 |
 */
 
-Route::get('/nome/nome1/nome2/nome3', function (){
-    return "Rota Grande";
-})->name('rota.nomeada');
-
-Route::any('/any', function (){
-    return 'Route Any';
-});
-
-Route::match(['get', 'post'],'/match', function (){
-   return 'Router Match';
-});
-
-Route::post('/post', function (){
-    return "Route Post"; // ideal para form's
-});
-
-Route::get('/contato', function (){
-    return 'Contato';
-});
-
-Route::get('/empresa', function (){
-    return view('empresa');
-});
-
 /*
-Route::get('/', function () {
-    return view('welcome');
-});
+ Route::get('/', 'Site\SiteController@index');
+Route::get('/contato', 'Site\SiteController@contato');
+
+Route::get('/categoria/{id}', 'Site\SiteController@categoria');
+Route::get('/categoria2/{id?}', 'Site\SiteController@categoriaOp');
 */
 
-Route::get('/', function () {
-    return redirect()->route('rota.nomeada');
+Route::group(['namespace'=>'Site'], function (){
+    Route::get('/', 'SiteController@index');
+    Route::get('/contato', 'SiteController@contato');
+
+    Route::get('/categoria/{id}', 'SiteController@categoria');
+    Route::get('/categoria2/{id?}', 'SiteController@categoriaOp');
 });
 
-Route::get('/categoria/{idCat}/nome-fixo/{param2}', function ($idCat, $param2){
-    return "Post da Categoria {$idCat} e {$param2}";
-});
-
-Route::get('/categoria2/{idCat?}', function ($idCat = "Nenhuma"){
-    return "Post da Categoria {$idCat}";
-});
-
-//Grupos de Rote
-
-Route::group(['prefix'=>'painel', 'middleware'=> 'auth'], function (){
-    Route::get('grupo1', function (){
-        return "GRupo 1";
-    });
-    Route::get('grupo2', function (){
-        return "GRupo 2";
-    });
-    Route::get('/', function (){
-        return 'Dashboard';
-    });
-});
-
-Route::get('/login', function (){
-    return "#form login";
-});
