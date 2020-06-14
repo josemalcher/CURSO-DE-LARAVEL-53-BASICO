@@ -54,7 +54,7 @@ composer create-project --prefer-dist laravel/laravel laravel53-basico "5.3.*"
 
 ## <a name="parte2">2 - Estrutura de Pastas do Laravel 5.3 </a>
 
-
+- https://laravel.com/docs/5.3/structure
 
 [Voltar ao Índice](#indice)
 
@@ -72,7 +72,44 @@ composer create-project --prefer-dist laravel/laravel laravel53-basico "5.3.*"
 
 ## <a name="parte4">4 - Rotas Laravel 5.3 </a>
 
+- https://laravel.com/docs/5.3/routing
 
+```php
+
+Route::get('/nome/nome1/nome2/nome3', function (){
+    return "Rota Grande";
+})->name('rota.nomeada');
+
+Route::any('/any', function (){
+    return 'Route Any';
+});
+
+Route::match(['get', 'post'],'/match', function (){
+   return 'Router Match';
+});
+
+Route::post('/post', function (){
+    return "Route Post"; // ideal para form's
+});
+
+Route::get('/contato', function (){
+    return 'Contato';
+});
+
+Route::get('/empresa', function (){
+    return view('empresa');
+});
+
+/*
+Route::get('/', function () {
+    return view('welcome');
+});
+*/
+
+Route::get('/', function () {
+    return redirect()->route('rota.nomeada');
+});
+```
 
 [Voltar ao Índice](#indice)
 
