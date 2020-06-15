@@ -299,7 +299,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 150);
             $table->integer('number');
             $table->boolean('active');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->enum('category', ['eletronicos', 'moveis', 'limpeza', 'banho']);
             $table->text('description');
             $table->timestamps();
@@ -326,7 +326,18 @@ class CreateProductsTable extends Migration
 
 ## <a name="parte13">13 - Migration Refresh Laravel 5.3 </a>
 
+```
+php artisan migrate:refresh
 
+Rolled back: 2020_06_15_021142_create_products_table
+Rolled back: 2014_10_12_100000_create_password_resets_table
+Rolled back: 2014_10_12_000000_create_users_table
+Migrated: 2014_10_12_000000_create_users_table
+Migrated: 2014_10_12_100000_create_password_resets_table
+Migrated: 2020_06_15_021142_create_products_table
+
+
+```
 
 [Voltar ao Índice](#indice)
 
