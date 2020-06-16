@@ -385,6 +385,11 @@ class UserTableSeeder extends Seeder
 
 ## <a name="parte15">15 - Models Laravel 5.3 </a>
 
+```
+php artisan make:model Models\Painel\Product
+
+```
+
 
 
 [Voltar ao Índice](#indice)
