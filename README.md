@@ -346,7 +346,37 @@ Migrated: 2020_06_15_021142_create_products_table
 
 ## <a name="parte14">14 - Seeders </a>
 
+```
+php artisan make:seeder UserTableSeeder
 
+php artisan db:seed
+
+```
+
+```php
+<?php
+
+use Illuminate\Database\Seeder;
+use App\User;
+
+class UserTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        User::create([
+            'name'=> 'José Malcher',
+            'email'=> 'contato@josemalcher.net',
+            'password'=> bcrypt('123456')
+        ]);
+    }
+}
+
+```
 
 [Voltar ao Índice](#indice)
 
