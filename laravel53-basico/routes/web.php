@@ -27,5 +27,7 @@ Route::group(['namespace'=>'Site'], function (){
     Route::get('/categoria2/{id?}', 'SiteController@categoriaOp');
 });
 
+Route::get('/painel/produtos/testes', 'Painel\ProdutoController@testes');
+
 Route::resource('/painel/produtos', 'Painel\ProdutoController');
 

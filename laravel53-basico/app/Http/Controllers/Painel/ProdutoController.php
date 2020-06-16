@@ -9,6 +9,17 @@ use App\Models\Painel\Product;
 
 class ProdutoController extends Controller
 {
+    private $product;
+
+    /**
+     * ProdutoController constructor.
+     * @param $product
+     */
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +44,7 @@ class ProdutoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) // D.I. (Dependecy injection)
@@ -44,7 +55,7 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -55,7 +66,7 @@ class ProdutoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -66,8 +77,8 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -78,11 +89,45 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+
+    /* TESTES */
+    public function testes()
+    {
+        /*
+        $prod = $this->product;
+        $prod->name = 'Produto X1';
+        $prod->number = '2';
+        $prod->active = true;
+        $prod->category = 'eletronicos';
+        $prod->description = 'Descição produto x1';
+
+        $insert = $prod->save();
+        if ($insert) {
+            return "Inserido com sucesso";
+        } else {
+            return "Falha ao inserir";
+        }
+        */
+
+        $insert = $this->product->create([ // Importante para proteção dos dados gravados
+            'name' => 'Nome Pro x3',
+            'number' => '3',
+            'active' => false,
+            'category' => 'eletronicos',
+            'description' => 'Desc x3',
+        ]);
+        if ($insert) {
+            return "Inserido com sucesso com CREATE {$insert->id}";
+        } else {
+            return "Falha ao inserir";
+        }
     }
 }

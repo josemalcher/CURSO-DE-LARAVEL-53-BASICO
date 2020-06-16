@@ -399,7 +399,63 @@ php artisan make:model Models\Painel\Product
 
 ## <a name="parte16">16 - Primeiro Cadastro no Banco de Dados Laravel 5.3 </a>
 
+```php
+Route::get('/painel/produtos/testes', 'Painel\ProdutoController@testes');
+```
 
+```php
+
+    /* TESTES */
+    public function testes()
+    {
+        /*
+        $prod = $this->product;
+        $prod->name = 'Produto X1';
+        $prod->number = '2';
+        $prod->active = true;
+        $prod->category = 'eletronicos';
+        $prod->description = 'Descição produto x1';
+
+        $insert = $prod->save();
+        if ($insert) {
+            return "Inserido com sucesso";
+        } else {
+            return "Falha ao inserir";
+        }
+        */
+
+        $insert = $this->product->create([ // Importante para proteção dos dados gravados
+            'name' => 'Nome Pro x3',
+            'number' => '3',
+            'active' => false,
+            'category' => 'eletronicos',
+            'description' => 'Desc x3',
+        ]);
+        if ($insert) {
+            return "Inserido com sucesso com CREATE {$insert->id}";
+        } else {
+            return "Falha ao inserir";
+        }
+    }
+```
+
+```php
+<?php
+
+namespace App\Models\Painel;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    protected $fillable = [
+        'name', 'number', 'active', 'category', 'description'
+    ];
+
+    //protected $guarded = ['admin'];
+}
+
+```
 
 [Voltar ao Índice](#indice)
 
