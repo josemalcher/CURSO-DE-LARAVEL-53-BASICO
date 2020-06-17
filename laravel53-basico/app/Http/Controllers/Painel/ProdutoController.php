@@ -117,7 +117,7 @@ class ProdutoController extends Controller
         }
         */
 
-        $insert = $this->product->create([ // Importante para proteção dos dados gravados
+        /*$insert = $this->product->create([ // Importante para proteção dos dados gravados
             'name' => 'Nome Pro x3',
             'number' => '3',
             'active' => false,
@@ -128,6 +128,54 @@ class ProdutoController extends Controller
             return "Inserido com sucesso com CREATE {$insert->id}";
         } else {
             return "Falha ao inserir";
+        }*/
+
+        /*
+         * UPDATE
+        $prod = $this->product->find(5);
+        $prod->name = 'Produto X1 Update';
+        $prod->number = '2';
+        $prod->active = true;
+        $prod->category = 'eletronicos';
+        $prod->description = 'Update Descição produto x1';
+        $insert = $prod->save();
+        if ($insert) {
+            return "Update com sucesso";
+        } else {
+            return "Falha Update";
         }
+        */
+
+        /*
+        $prod = $this->product->find(5);
+        $update = $prod->update([
+            'name' => 'UPDATE Nome Pro x3',
+            'number' => '3',
+            'active' => false,
+            'category' => 'eletronicos',
+            'description' => 'UP Desc x3',
+        ]);
+        if ($update) {
+            return "Update com sucesso";
+        } else {
+            return "Falha Update";
+        }
+        */
+
+        $prod = $this->product
+                        ->where('number', '=', 333) // ('number', 333)
+                        ->update([
+                        'name' => 'UPDATE 2 Nome Pro x3',
+                        'number' => '333',
+                        'active' => false,
+                        'category' => 'eletronicos',
+                        'description' => 'UP 2 Desc x3',
+        ]);
+        if ($prod) {
+            return "Update com sucesso";
+        } else {
+            return "Falha Update";
+        }
+
     }
 }
