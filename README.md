@@ -524,7 +524,28 @@ public function testes()
 
 ## <a name="parte18">18 - Delete Laravel 5.3 </a>
 
+```php
+public function testes()
+    {
+        
+        //$prod = $this->product->destroy(3);
+        $prod = $this->product->destroy([3,4]);
+        //$prod = $this->product->find(3);
+        //$delete = $prod->delete();
+//        if ($delete) {
+//            return "Deletado com sucesso";
+//        } else {
+//            return "Falha Delete";
+//        }
 
+        $delete = $this->product->where('number', '333')->delete();
+        if ($delete) {
+            return "Deletado com sucesso";
+        } else {
+            return "Falha Delete";
+        }
+    }
+```
 
 [Voltar ao Índice](#indice)
 

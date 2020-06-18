@@ -161,7 +161,7 @@ class ProdutoController extends Controller
             return "Falha Update";
         }
         */
-
+/*
         $prod = $this->product
                         ->where('number', '=', 333) // ('number', 333)
                         ->update([
@@ -176,6 +176,23 @@ class ProdutoController extends Controller
         } else {
             return "Falha Update";
         }
+*/
 
+        //$prod = $this->product->find(3);
+        //$delete = $prod->delete();
+        //$prod = $this->product->destroy(3);
+        $prod = $this->product->destroy([3,4]);
+//        if ($delete) {
+//            return "Deletado com sucesso";
+//        } else {
+//            return "Falha Delete";
+//        }
+
+        $delete = $this->product->where('number', '333')->delete();
+        if ($delete) {
+            return "Deletado com sucesso";
+        } else {
+            return "Falha Delete";
+        }
     }
 }
