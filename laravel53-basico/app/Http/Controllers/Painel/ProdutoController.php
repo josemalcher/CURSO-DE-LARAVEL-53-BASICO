@@ -27,8 +27,11 @@ class ProdutoController extends Controller
      */
     public function index(Product $product)
     {
+
+        $title = "Listagem de Produtos Controller";
+
         $products = $product->all();
-        return view('painel.products.index', compact('products'));
+        return view('painel.products.index', compact('products', 'title'));
     }
 
     /**
