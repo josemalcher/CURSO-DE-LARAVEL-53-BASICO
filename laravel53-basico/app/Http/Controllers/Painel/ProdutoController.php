@@ -58,9 +58,22 @@ class ProdutoController extends Controller
         //dd($request->all());
         //dd($request->only('name'));
         //dd($request->except(['_token', 'descricao-produto']));
-        dd($request->input('name-produto'));
+        //dd($request->input('name-produto'));
 
-        return "cADASTRANDO......";
+        $dataForm = $request->all();
+        //$dataForm = $request->except(['_token']);
+        $dataForm['active'] = (!isset($dataForm['active'])) ? 0 : 1;
+
+        //$insert = $this->product->insert($dataForm);
+        $insert = $this->product->create($dataForm);
+
+        if ($insert) {
+            return redirect()->route('produtos.index');
+        } else {
+            return redirect()->route('produtos.create');
+        }
+
+
     }
 
     /**
