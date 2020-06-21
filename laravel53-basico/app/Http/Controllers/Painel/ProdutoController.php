@@ -61,14 +61,28 @@ class ProdutoController extends Controller
         //dd($request->input('name-produto'));
 
 
-        $this->validate($request, $this->product->rules);
-
-
         $dataForm = $request->all();
-        //$dataForm = $request->except(['_token']);
+        //$this->validate($request, $this->product->rules);
         $dataForm['active'] = (!isset($dataForm['active'])) ? 0 : 1;
-
+        //$dataForm = $request->except(['_token']);
         //$insert = $this->product->insert($dataForm);
+
+        $messages = [
+            'name.required'=> "O campo nome é requerido",
+            'number.numeric'=> 'Apenas números'
+        ];
+
+        $validate = validator($dataForm, $this->product->rules , $messages);
+
+
+        if ($validate->fails()){
+            return redirect()
+                        ->route('produtos.create')
+                        ->withErrors($validate)
+                        ->withInput();
+        }
+
+
         $insert = $this->product->create($dataForm);
 
         if ($insert) {
