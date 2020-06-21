@@ -637,6 +637,8 @@ php artisan make:request ProductFormRequest
 
 ## <a name="parte28">28 - Pacote Collective Form and HTML no Laravel </a>
 
+- https://laravelcollective.com/docs/5.3/html
+
 
 
 [Voltar ao Índice](#indice)
