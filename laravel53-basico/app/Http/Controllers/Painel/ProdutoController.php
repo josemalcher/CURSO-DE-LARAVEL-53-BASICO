@@ -60,6 +60,10 @@ class ProdutoController extends Controller
         //dd($request->except(['_token', 'descricao-produto']));
         //dd($request->input('name-produto'));
 
+
+        $this->validate($request, $this->product->rules);
+
+
         $dataForm = $request->all();
         //$dataForm = $request->except(['_token']);
         $dataForm['active'] = (!isset($dataForm['active'])) ? 0 : 1;

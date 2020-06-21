@@ -9,7 +9,21 @@
     {!! csrf_field() !!}
     <div class="form-group">
         <label for="name-produto">Nome do Produto</label>
-        <input type="text" class="form-control" id="name-produto" name="name" placeholder="Nome do Produto">
+
+            @if(isset($errors) && count($errors) > 0)
+            <div class="alert alert-danger">
+                <div>
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+
+        <input type="text"
+               class="form-control"
+               id="name-produto" name="name"
+               value="{{old('name')}}" placeholder="Nome do Produto">
     </div>
     <div class="checkbox">
         <label>
