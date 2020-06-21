@@ -608,7 +608,9 @@ public function testes()
 
 ## <a name="parte25">25 - Form Request Validation no Laravel </a>
 
-
+```
+php artisan make:request ProductFormRequest
+```
 
 [Voltar ao Índice](#indice)
 

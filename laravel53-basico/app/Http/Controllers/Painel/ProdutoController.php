@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Painel;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Models\Painel\Product;
+use App\Http\Requests\Painel\ProductFormRequest;
 
 class ProdutoController extends Controller
 {
@@ -53,7 +53,7 @@ class ProdutoController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) // D.I. (Dependecy injection)
+    public function store(ProductFormRequest $request) // D.I. (Dependecy injection)
     {
         //dd($request->all());
         //dd($request->only('name'));
@@ -67,20 +67,20 @@ class ProdutoController extends Controller
         //$dataForm = $request->except(['_token']);
         //$insert = $this->product->insert($dataForm);
 
-        $messages = [
+        /*$messages = [
             'name.required'=> "O campo nome é requerido",
             'number.numeric'=> 'Apenas números'
-        ];
+        ];*/
 
-        $validate = validator($dataForm, $this->product->rules , $messages);
+        //$validate = validator($dataForm, $this->product->rules , $messages);
 
 
-        if ($validate->fails()){
+        /*if ($validate->fails()){
             return redirect()
                         ->route('produtos.create')
                         ->withErrors($validate)
                         ->withInput();
-        }
+        }*/
 
 
         $insert = $this->product->create($dataForm);
