@@ -11,6 +11,8 @@ class ProdutoController extends Controller
 {
     private $product;
 
+    private $totalPage = 3;
+
     /**
      * ProdutoController constructor.
      * @param $product
@@ -30,7 +32,8 @@ class ProdutoController extends Controller
 
         $title = "Listagem de Produtos Controller";
 
-        $products = $product->all();
+        //$products = $product->all();
+        $products = $product->paginate($this->totalPage);
         return view('painel.products.index', compact('products', 'title'));
     }
 
