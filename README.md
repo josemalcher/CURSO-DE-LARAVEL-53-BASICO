@@ -572,7 +572,7 @@ public function testes()
 
 ## <a name="parte21">21 - Requests Laravel 5.3 </a>
 
-
+- Documentação oficial: https://laravel.com/docs/5.3/requests
 
 [Voltar ao Índice](#indice)
 

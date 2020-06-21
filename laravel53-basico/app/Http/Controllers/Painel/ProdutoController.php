@@ -55,6 +55,11 @@ class ProdutoController extends Controller
      */
     public function store(Request $request) // D.I. (Dependecy injection)
     {
+        //dd($request->all());
+        //dd($request->only('name'));
+        //dd($request->except(['_token', 'descricao-produto']));
+        dd($request->input('name-produto'));
+
         return "cADASTRANDO......";
     }
 

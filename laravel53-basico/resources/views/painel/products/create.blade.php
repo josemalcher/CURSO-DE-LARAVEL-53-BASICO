@@ -9,7 +9,7 @@
     {!! csrf_field() !!}
     <div class="form-group">
         <label for="name-produto">Nome do Produto</label>
-        <input type="text" class="form-control" id="name-produto" placeholder="Nome do Produto">
+        <input type="text" class="form-control" id="name-produto" name="name-produto" placeholder="Nome do Produto">
     </div>
     <div class="checkbox">
         <label>
@@ -18,16 +18,21 @@
     </div>
     <div class="form-group">
         <label for="numero-produto">Número</label>
-        <input type="text" class="form-control" id="numero-produto" placeholder="Numero do Produto">
+        <input type="text" class="form-control" id="numero-produto" name="numero-produto" placeholder="Numero do Produto">
     </div>
     <div class="form-group">
         <label for="numero-produto">Selecione a Categoria</label>
-        <select name="categoria" class="form-control"></select>
+        <select name="categoria" class="form-control">
+            <option>Escolha a Categoria</option>
+            @foreach($categories as $category)
+                <option value="{{$category}}">{{$category}}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="form-group">
         <label for="descricao-produto">Número</label>
-        <input type="text" class="form-control" id="descricao-produto" placeholder="Descrição">
+        <input type="text" class="form-control" id="descricao-produto" name="descricao-produto" placeholder="Descrição">
     </div>
 
     <button type="submit" class="btn btn-default">Enviar</button>
