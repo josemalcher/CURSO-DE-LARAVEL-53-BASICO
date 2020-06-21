@@ -129,9 +129,24 @@ class ProdutoController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductFormRequest $request, $id)
     {
-        return "PUT... UPDATE! $id";
+
+        $dataForm = $request->all();
+
+        $dataForm['active'] = (!isset($dataForm['active'])) ? 0 : 1;
+
+        $produto = $this->product->find($id);
+
+        $update = $produto->update($dataForm);
+
+        if($update){
+            return redirect()->route('produtos.index');
+        }else{
+            return redirect()->route('produtos.edit', $id)->with(['error'=> 'Falha ao salvar']);
+        }
+
+
     }
 
     /**
