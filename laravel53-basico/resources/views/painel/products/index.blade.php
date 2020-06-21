@@ -20,7 +20,10 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->description}}</td>
                 <td>
-                    <a href="#" class="edit actions">
+                    {{--<a href="{{url("/painel/produtos/$product->id/edit")}}" class="edit actions">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>--}}
+                    <a href="{{route('produtos.edit', $product->id)}}" class="edit actions">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <a href="#" class="delete actions">
